@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum | Seminarlounge</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <style>
+        :root {
+            --primary:      #3D6B8E;
+            --primary-dark: #2d5470;
+            --sage:         #989F95;
+            --dove:         #ACC0C8;
+            --text:         #656D6B;
+            --text-dark:    #78808B;
+            --creme:        #F1EEEE;
+            --frost:        #F1F7FF;
+            --silver-sage:  #C6CDC9;
+            --border:       #D8DBD9;
+            --white:        #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--creme);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ─── NAV ─── */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--white);
+            border-bottom: 2px solid var(--dove);
+            box-shadow: 0 2px 12px rgba(61,107,142,0.07);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .nav-logo {
+            background: transparent;
+            padding: 4px 6px;
+        }
+
+        .nav-logo img {
+            height: 58px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--text);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .nav-back:hover { color: var(--primary); }
+
+        @media (max-width: 700px) {
+            .nav-inner { height: 64px; padding: 0 20px; }
+            .nav-logo img { height: 50px; }
+        }
+
+        /* ─── PAGE HEADER ─── */
+        .page-header {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 52px 24px 44px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 0.88rem;
+            opacity: 0.7;
+        }
+
+        /* ─── CONTENT ─── */
+        .legal-content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+
+        .legal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-top: 44px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .legal-content h2:first-child { margin-top: 0; }
+
+        .legal-content p {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 12px;
+        }
+
+        .legal-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .legal-content a:hover { text-decoration: underline; }
+
+        .info-block {
+            background: var(--white);
+            border-left: 3px solid var(--dove);
+            border-radius: 0 3px 3px 0;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+        }
+
+        .info-block p {
+            margin-bottom: 4px;
+        }
+
+        .info-block p:last-child { margin-bottom: 0; }
+
+        .notice-box {
+            background: var(--frost);
+            border: 1px solid var(--dove);
+            border-radius: 3px;
+            padding: 16px 20px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-top: 40px;
+        }
+
+        /* ─── FOOTER ─── */
+        .site-footer {
+            background: #c6cdc9;
+            color: rgba(0,0,0,0.65);
+            padding: 36px 40px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .site-footer strong { color: #303030; }
+
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(0,0,0,0.55);
+            text-decoration: none;
+            font-size: 0.76rem;
+            transition: color 0.15s;
+        }
+
+        .footer-links a:hover { color: rgba(0,0,0,0.9); }
+
+        .footer-copy {
+            margin-top: 14px;
+            font-size: 0.72rem;
+            opacity: 0.4;
+        }
+
+        @media (max-width: 700px) {
+            .site-footer { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <img src="assets/seminarlounge-logo.png" alt="Seminarlounge">
+        </a>
+        <a href="index.html" class="nav-back">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Zurück
+        </a>
+    </div>
+</nav>
+
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<div class="page-header">
+    <h1>Impressum</h1>
+    <p>Angaben gemäß § 5 TMG</p>
+</div>
+
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="legal-content">
+
+    <h2>Anbieter</h2>
+    <div class="info-block">
+        <p><strong>M. Greiff GmbH</strong></p>
+        <p>Bruder-Konrad-Weg 15<br>94094 Rotthalmünster<br>Deutschland</p>
+    </div>
+
+    <h2>Vertreten durch</h2>
+    <p>Geschäftsführerin: Marie Greiff</p>
+
+    <h2>Kontakt</h2>
+    <p>
+        E-Mail: <a href="mailto:info@seminarlounge.com">info@seminarlounge.com</a><br>
+        <em>(Keine telefonische Erreichbarkeit)</em>
+    </p>
+
+    <h2>Handelsregister</h2>
+    <p>
+        Handelsregisternummer: HRB 10999<br>
+        Registergericht: Amtsgericht Passau
+    </p>
+
+    <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+    <p>
+        Berufsbezeichnung: Apothekerin (Approbation in Deutschland verliehen), Dozentin<br>
+        Zuständige Kammer: Bayerische Landesapothekerkammer
+    </p>
+
+    <h2>Zuständiges Gewerbeamt</h2>
+    <p>
+        Marktplatz 10, 94094 Rotthalmünster<br>
+        Telefon: +49 (0)8533 96000
+    </p>
+
+    <h2>Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h2>
+    <p>
+        Marie Greiff<br>
+        Bruder-Konrad-Weg 15<br>
+        94094 Rotthalmünster
+    </p>
+
+    <h2>Aufsichtsbehörde</h2>
+    <p>
+        Bayerische Landeszentrale für neue Medien (BLM)<br>
+        Heinrich-Lübke-Straße 27<br>
+        81737 München
+    </p>
+
+    <h2>Streitschlichtung</h2>
+    <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:<br>
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>
+    </p>
+    <p>
+        Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+    </p>
+
+    <h2>Haftung für Inhalte</h2>
+    <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach
+        den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter
+        jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen
+        oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+    </p>
+    <p>
+        Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen
+        Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt
+        der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+        Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+    </p>
+
+    <h2>Haftung für Links</h2>
+    <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss
+        haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die
+        Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten
+        verantwortlich.
+    </p>
+    <p>
+        Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
+        Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente
+        inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer
+        Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige
+        Links umgehend entfernen.
+    </p>
+
+    <h2>Urheberrecht</h2>
+    <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+        deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+        Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
+        jeweiligen Autors bzw. Erstellers.
+    </p>
+
+    <div class="notice-box">
+        Stand: April 2026
+    </div>
+
+</main>
+
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="site-footer">
+    <div><strong>Seminarlounge by Marie Greiff &amp; Experts</strong></div>
+    <div style="margin-top: 5px; opacity: 0.65;">
+        Fortbildungen für ganzheitliche Medizin, Naturheilpraxis &amp; Pharmazie &nbsp;·&nbsp; Über 25 Jahre Erfahrung
+    </div>
+    <div class="footer-links">
+        <a href="mailto:info@seminarlounge.com">info@seminarlounge.com</a>
+        <a href="https://seminarlounge.com">seminarlounge.com</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p class="footer-copy">© 2026 Seminarlounge by Marie Greiff &amp; Experts</p>
+</footer>
+
+</body>
+</html>

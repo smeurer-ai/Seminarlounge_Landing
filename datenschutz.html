@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung | Seminarlounge</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <style>
+        :root {
+            --primary:      #3D6B8E;
+            --primary-dark: #2d5470;
+            --sage:         #989F95;
+            --dove:         #ACC0C8;
+            --text:         #656D6B;
+            --text-dark:    #78808B;
+            --creme:        #F1EEEE;
+            --frost:        #F1F7FF;
+            --silver-sage:  #C6CDC9;
+            --border:       #D8DBD9;
+            --white:        #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--creme);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ─── NAV ─── */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--white);
+            border-bottom: 2px solid var(--dove);
+            box-shadow: 0 2px 12px rgba(61,107,142,0.07);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .nav-logo {
+            background: transparent;
+            padding: 4px 6px;
+        }
+
+        .nav-logo img {
+            height: 58px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--text);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .nav-back:hover { color: var(--primary); }
+
+        @media (max-width: 700px) {
+            .nav-inner { height: 64px; padding: 0 20px; }
+            .nav-logo img { height: 50px; }
+        }
+
+        /* ─── PAGE HEADER ─── */
+        .page-header {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 52px 24px 44px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 0.88rem;
+            opacity: 0.7;
+        }
+
+        /* ─── CONTENT ─── */
+        .legal-content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+
+        .legal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 44px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .legal-content h2:first-child { margin-top: 0; }
+
+        .legal-content p {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 12px;
+        }
+
+        .legal-content p:last-child { margin-bottom: 0; }
+
+        .legal-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .legal-content a:hover { text-decoration: underline; }
+
+        .legal-content ul {
+            margin: 10px 0 14px 22px;
+        }
+
+        .legal-content ul li {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 4px;
+        }
+
+        .info-block {
+            background: var(--white);
+            border-left: 3px solid var(--dove);
+            border-radius: 0 3px 3px 0;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+        }
+
+        .info-block p {
+            margin-bottom: 4px;
+        }
+
+        .info-block p:last-child { margin-bottom: 0; }
+
+        .notice-box {
+            background: var(--frost);
+            border: 1px solid var(--dove);
+            border-radius: 3px;
+            padding: 16px 20px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-top: 40px;
+            line-height: 1.6;
+        }
+
+        /* ─── FOOTER ─── */
+        .site-footer {
+            background: #c6cdc9;
+            color: rgba(0,0,0,0.65);
+            padding: 36px 40px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .site-footer strong { color: #303030; }
+
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(0,0,0,0.55);
+            text-decoration: none;
+            font-size: 0.76rem;
+            transition: color 0.15s;
+        }
+
+        .footer-links a:hover { color: rgba(0,0,0,0.9); }
+
+        .footer-copy {
+            margin-top: 14px;
+            font-size: 0.72rem;
+            opacity: 0.4;
+        }
+
+        @media (max-width: 700px) {
+            .site-footer { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <img src="assets/seminarlounge-logo.png" alt="Seminarlounge">
+        </a>
+        <a href="index.html" class="nav-back">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Zurück
+        </a>
+    </div>
+</nav>
+
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<div class="page-header">
+    <h1>Datenschutzerklärung</h1>
+    <p>für die Website www.seminarlounge.com</p>
+</div>
+
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="legal-content">
+
+    <h2>1. Verantwortliche Stelle</h2>
+    <p>Verantwortlicher im Sinne der Datenschutzgesetze ist die</p>
+    <div class="info-block">
+        <p><strong>M. Greiff GmbH</strong></p>
+        <p>Bruder-Konrad-Weg 15, 94094 Rotthalmünster, Deutschland</p>
+        <p>vertreten durch die Geschäftsführerin Marie Greiff</p>
+        <p>Kontakt: E-Mail: <a href="mailto:info@seminarlounge.com">info@seminarlounge.com</a> (keine telefonische Erreichbarkeit)</p>
+    </div>
+    <p>Das Unternehmen hat keinen Datenschutzbeauftragten benannt.</p>
+
+    <h2>2. Zwecke und Rechtsgrundlagen der Datenverarbeitung</h2>
+    <p>Wir verarbeiten personenbezogene Daten (Vorname, Nachname, E-Mail-Adresse und Berufsbezeichnung) für folgende Zwecke:</p>
+    <p><strong>Marketing und Newsletter</strong> – wir informieren Interessenten über Veranstaltungen und Angebote. Die Rechtsgrundlage ist Ihre ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Zur ordnungsgemäßen Registrierung verwenden wir das Double-Opt-In-Verfahren; die Newsletter-Anmeldung wird protokolliert (Zeitpunkt, IP-Adresse).</p>
+    <p><strong>Bereitstellung der Website</strong> – unser Hosting-Provider (All-Inkl.) erhebt Daten zur technisch fehlerfreien Bereitstellung der Seiten. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+    <p>Daten speichern wir bis zum Widerruf Ihrer Einwilligung bzw. solange gesetzliche Aufbewahrungspflichten bestehen.</p>
+
+    <h2>3. Hosting und E-Mail-Versand</h2>
+    <p>Unsere Website wird bei ALL-INKL.COM – Neue Medien Münnich, Hauptstraße 68, 02742 Friedersdorf, Deutschland gehostet. Zum Zweck der Bereitstellung und Darstellung der Website werden Logdaten (z. B. IP-Adresse, Zeitstempel, besuchte Seiten) automatisch erfasst und in Server-Logfiles gespeichert. Wir haben mit dem Anbieter einen Vertrag zur Auftragsverarbeitung abgeschlossen. Die Verarbeitung beruht auf unserem berechtigten Interesse an einer sicheren und effizienten Bereitstellung unseres Onlineangebotes.</p>
+    <p>Der Versand und Empfang von E-Mails erfolgt ebenfalls über Server von All-Inkl. Damit verbundene Daten werden für die Dauer der jeweiligen Kommunikation gespeichert.</p>
+
+    <h2>4. Newsletter – Brevo (früher Sendinblue)</h2>
+    <p>Für den Versand des Newsletters nutzen wir den Dienst Brevo (Sendinblue SAS, 106 boulevard Haussmann, 75008 Paris, Frankreich). Brevo verarbeitet u. a. folgende Daten: Ihre E-Mail-Adresse, Name, IP-Adresse, Anmelde- und Bestätigungszeitpunkt sowie Interaktionen mit dem Newsletter (z. B. Öffnungs- und Klickverhalten). Die Nutzung von Brevo erfordert eine Einwilligung durch ein Consent-Banner. Wir haben mit Brevo einen Auftragsverarbeitungsvertrag geschlossen. Die Daten werden auf Servern in der EU gespeichert und dort verarbeitet. Eine Weitergabe in Drittländer erfolgt nicht.</p>
+    <p>Sie können Ihre Einwilligung in den Newsletter jederzeit widerrufen. In jeder Newsletter-E-Mail befindet sich ein entsprechender Abmeldelink.</p>
+
+    <h2>5. Webanalyse – Google Analytics</h2>
+    <p>Wir setzen Google Analytics ein, einen Webanalyse-Dienst der Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google erhebt u. a. Cookie-IDs, Online-Kennungen, IP-Adressen und genaue Standortdaten. Zum Schutz der Privatsphäre nutzen wir die IP-Anonymisierung: das letzte Byte der IP-Adresse wird gekürzt. Google speichert die Informationen in den USA.</p>
+    <p>Rechtsgrundlage für den Einsatz von Google Analytics ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO); die Einbindung von Analyse-Cookies erfordert ein zustimmungsbedürftiges Consent-Banner. Wir haben mit Google einen Auftragsverarbeitungsvertrag abgeschlossen.</p>
+    <p>Sie können Ihre Einwilligung jederzeit durch Anpassung Ihrer Cookie-Einstellungen widerrufen. Daneben bietet Google ein Browser-Add-on zur Deaktivierung von Google Analytics an.</p>
+
+    <h2>6. Online Marketing – Google Ads</h2>
+    <p>Wir verwenden Google Ads, einen Dienst der Google LLC, zur Schaltung von Online-Werbeanzeigen. Dabei können folgende Daten verarbeitet werden: IP-Adresse, Geräteinformationen, Browserverlauf, demografische Daten, Standort sowie Interaktionen mit Werbeanzeigen. Die Nutzung von Google Ads erfordert eine Einwilligung über ein Consent-Banner. Daten werden möglicherweise in die USA übermittelt; der Anbieter ist nach dem EU-US-Data-Privacy-Framework zertifiziert, sodass ein angemessenes Datenschutzniveau besteht. Ein Auftragsverarbeitungsvertrag mit Google liegt vor.</p>
+    <p>Sie können Ihre Einwilligung jederzeit widerrufen und haben die Möglichkeit, personalisierte Werbung bei Google zu deaktivieren.</p>
+
+    <h2>7. Marketing – Facebook Pixel</h2>
+    <p>Zur Analyse und Optimierung unserer Facebook-Werbeanzeigen setzen wir den Facebook Pixel der Meta Platforms Ireland Ltd. ein. Dabei werden unter anderem folgende Daten verarbeitet: IP-Adresse, Browserinformationen, besuchte Seiten, Referrer, Pixel-ID und Facebook-Cookies. Die Einbindung des Facebook Pixels erfolgt erst nach Ihrer Einwilligung über das Consent-Banner. Die Daten können in die USA übermittelt werden; Meta ist nach dem EU-US-Data-Privacy-Framework zertifiziert. Ein Auftragsverarbeitungsvertrag mit Meta wurde geschlossen.</p>
+    <p>Sie können Ihre Einwilligung jederzeit widerrufen. Weitere Informationen zur Datenverarbeitung durch Meta finden Sie in deren Datenschutzerklärung.</p>
+
+    <h2>8. Cookies</h2>
+    <p>Unsere Website nutzt Cookies und vergleichbare Technologien. Essenzielle Cookies sind notwendig, um die Grundfunktionen der Seite bereitzustellen. Statistik- und Marketing-Cookies dienen der Analyse von Nutzungsverhalten und der Schaltung personalisierter Werbung. Der Einsatz nicht essenzieller Cookies erfolgt nur nach Ihrer Einwilligung via Consent-Banner. Sie können Ihre Einwilligung jederzeit in den Cookie-Einstellungen widerrufen oder Ihren Browser so konfigurieren, dass keine Cookies gespeichert werden.</p>
+
+    <h2>9. Eingebettete Dienste Dritter</h2>
+    <p>Wir verwenden Google Fonts lediglich lokal. Die Schriftarten werden von unserem Server geladen; es wird keine Verbindung zu Servern von Google hergestellt. Dadurch werden keine personenbezogenen Daten an Google übermittelt.</p>
+
+    <h2>10. SSL-/TLS-Verschlüsselung</h2>
+    <p>Unsere Website nutzt eine SSL- bzw. TLS-Verschlüsselung, um Ihre Daten bei der Übertragung vor unbefugtem Zugriff zu schützen. Eine verschlüsselte Verbindung erkennen Sie an der Zeichenfolge „https://" in der Adresszeile Ihres Browsers.</p>
+
+    <h2>11. Rechte der betroffenen Personen</h2>
+    <p>Sie haben folgende Rechte:</p>
+    <ul>
+        <li>Auskunft über Ihre bei uns gespeicherten Daten;</li>
+        <li>Berichtigung unrichtiger Daten;</li>
+        <li>Löschung Ihrer Daten (soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen);</li>
+        <li>Einschränkung der Verarbeitung;</li>
+        <li>Datenübertragbarkeit;</li>
+        <li>Widerspruch gegen die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO;</li>
+        <li>Widerruf Ihrer Einwilligung mit Wirkung für die Zukunft;</li>
+        <li>Beschwerde bei einer Aufsichtsbehörde.</li>
+    </ul>
+    <p>Bitte richten Sie entsprechende Anfragen an <a href="mailto:info@seminarlounge.com">info@seminarlounge.com</a>.</p>
+
+    <h2>12. Aktualisierungen dieser Datenschutzerklärung</h2>
+    <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, um sie an geänderte Rechtslagen oder bei Änderungen des Dienstes sowie der Datenverarbeitung anzupassen. Für Ihren erneuten Besuch gilt die jeweils aktuelle Fassung.</p>
+
+    <h2>13. Hinweis zur anwaltlichen Prüfung</h2>
+    <p>Diese Datenschutzerklärung wurde nach bestem Wissen erstellt und orientiert sich an den Anforderungen der DSGVO. Sie ersetzt keine anwaltliche Beratung. Bitte lassen Sie die Erklärung abschließend durch eine Rechtsanwältin oder einen Rechtsanwalt prüfen.</p>
+
+    <div class="notice-box">
+        Stand: April 2026
+    </div>
+
+</main>
+
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="site-footer">
+    <div><strong>Seminarlounge by Marie Greiff &amp; Experts</strong></div>
+    <div style="margin-top: 5px; opacity: 0.65;">
+        Fortbildungen für ganzheitliche Medizin, Naturheilpraxis &amp; Pharmazie &nbsp;·&nbsp; Über 25 Jahre Erfahrung
+    </div>
+    <div class="footer-links">
+        <a href="mailto:info@seminarlounge.com">info@seminarlounge.com</a>
+        <a href="https://seminarlounge.com">seminarlounge.com</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p class="footer-copy">© 2026 Seminarlounge by Marie Greiff &amp; Experts</p>
+</footer>
+
+</body>
+</html>
