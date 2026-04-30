@@ -1177,9 +1177,9 @@
                 body: JSON.stringify({
                     email: em,
                     attributes: {
-                        FIRSTNAME: v,
-                        LASTNAME:  n,
-                        BERUF:     b
+                        FIRSTNAME:    v,
+                        LASTNAME:     n,
+                        BERUFSGRUPPE: b
                     },
                     listIds: [BREVO_LIST_ID],
                     updateEnabled: true
@@ -1187,6 +1187,8 @@
             });
 
             if (!res.ok && res.status !== 204) {
+                const errBody = await res.text();
+                console.error('Brevo-Fehler', res.status, errBody);
                 throw new Error('Brevo-Fehler: ' + res.status);
             }
 
