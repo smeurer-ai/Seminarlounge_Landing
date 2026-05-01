@@ -1057,8 +1057,8 @@
                     <path d="M20 6L9 17l-5-5"/>
                 </svg>
             </div>
-            <h3>Vielen Dank für deine Anmeldung!</h3>
-            <p>Du erhältst in Kürze eine Bestätigung mit den Zoom-Zugangsdaten an deine E-Mail-Adresse. Wir freuen uns auf dich.</p>
+            <h3>Fast geschafft – bitte bestätige deine E-Mail!</h3>
+            <p>Wir haben dir eine Bestätigungs-E-Mail geschickt. Klicke bitte auf den Link darin, um deinen Platz zu sichern. Die Zoom-Zugangsdaten erhältst du nach der Bestätigung.</p>
         </div>
 
         <!-- Formular -->
@@ -1140,8 +1140,10 @@
 
 <script>
     // ── Brevo-Konfiguration ──────────────────────────────────────────
-    const BREVO_API_KEY  = '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';
-    const BREVO_LIST_ID  = 11; // HIER_DEINE_LISTEN_ID_EINTRAGEN (Zahl)
+    const BREVO_API_KEY       = '%%BREVO_API_KEY%%';   // wird per GitHub Secret injiziert
+    const BREVO_LIST_ID       = 11;
+    const BREVO_DOI_TEMPLATE  = 6;
+    const BREVO_REDIRECT_URL  = 'https://seminarlounge.com';
     // ────────────────────────────────────────────────────────────────
 
     document.getElementById('anmeldeForm').addEventListener('submit', async function (e) {
@@ -1168,7 +1170,7 @@
         btn.textContent = 'Wird gesendet …';
 
         try {
-            const res = await fetch('https://api.brevo.com/v3/contacts', {
+            const res = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1176,13 +1178,14 @@
                 },
                 body: JSON.stringify({
                     email: em,
+                    includeListIds: [BREVO_LIST_ID],
+                    templateId: BREVO_DOI_TEMPLATE,
+                    redirectionUrl: BREVO_REDIRECT_URL,
                     attributes: {
                         FIRSTNAME:    v,
                         LASTNAME:     n,
                         BERUFSGRUPPE: b
-                    },
-                    listIds: [BREVO_LIST_ID],
-                    updateEnabled: true
+                    }
                 })
             });
 
