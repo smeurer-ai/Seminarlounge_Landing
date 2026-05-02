@@ -822,6 +822,24 @@
             .details-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+    <style>
+        /* ─── Brevo-Formular: Design-Anpassung ─── */
+        .sib-form { background: transparent !important; padding: 0 !important; text-align: left !important; }
+        #sib-container { background: transparent !important; border: none !important; border-radius: 0 !important; max-width: 100% !important; padding: 0 !important; text-align: left !important; }
+        #sib-form { font-family: 'Open Sans', sans-serif !important; }
+        .entry__label { font-family: 'Open Sans', sans-serif !important; font-size: 0.78rem !important; font-weight: 600 !important; color: var(--text) !important; letter-spacing: 0.04em !important; text-transform: none !important; }
+        #sib-container .input { padding: 12px 16px !important; border: 1.5px solid var(--border) !important; border-radius: 3px !important; font-family: 'Open Sans', sans-serif !important; font-size: 0.88rem !important; color: var(--text) !important; background: var(--creme) !important; box-shadow: none !important; }
+        #sib-container .input:focus { border-color: var(--dove) !important; box-shadow: 0 0 0 3px rgba(172,192,200,0.2) !important; background: var(--white) !important; }
+        #sib-container input::placeholder, #sib-container textarea::placeholder { color: var(--sage) !important; font-family: 'Open Sans', sans-serif !important; }
+        .sib-form-block__button { background: var(--primary) !important; font-family: 'Open Sans', sans-serif !important; border-radius: 3px !important; padding: 15px 38px !important; font-size: 0.92rem !important; font-weight: 600 !important; letter-spacing: 0.05em !important; text-transform: none !important; transition: background 0.18s !important; }
+        .sib-form-block__button:hover { background: var(--primary-dark) !important; }
+        #error-message, #success-message { max-width: 100% !important; font-family: 'Open Sans', sans-serif !important; border-radius: 3px !important; }
+        .sib-form__declaration { font-family: 'Open Sans', sans-serif !important; font-size: 0.75rem !important; }
+        .sib-form__declaration a { color: var(--primary) !important; }
+        .brevo-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+        @media (max-width: 700px) { .brevo-form-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 
@@ -1050,73 +1068,213 @@
             Nach deiner Anmeldung erhältst du die Zoom-Zugangsdaten per E-Mail.
         </p>
 
-        <!-- Erfolgsmeldung -->
-        <div class="form-success" id="formSuccess">
-            <div class="check-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 6L9 17l-5-5"/>
+        <!-- Brevo Anmeldeformular -->
+        <div class="sib-form">
+          <div id="sib-form-container" class="sib-form-container">
+
+            <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949; max-width:100%;">
+              <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                  <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/>
                 </svg>
+                <span class="sib-form-message-panel__inner-text">
+                  Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut.
+                </span>
+              </div>
             </div>
-            <h3>Fast geschafft – bitte bestätige deine E-Mail!</h3>
-            <p>Wir haben dir eine Bestätigungs-E-Mail geschickt. Klicke bitte auf den Link darin, um deinen Platz zu sichern. Die Zoom-Zugangsdaten erhältst du nach der Bestätigung.</p>
-        </div>
+            <div></div>
 
-        <!-- Formular -->
-        <form id="anmeldeForm" novalidate>
-            <div class="form-grid">
+            <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66; max-width:100%;">
+              <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                  <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/>
+                </svg>
+                <span class="sib-form-message-panel__inner-text">
+                  Fast geschafft – bitte bestätige deine E-Mail!
+                </span>
+              </div>
+            </div>
+            <div></div>
 
-                <div class="form-group">
-                    <label class="field-label" for="vorname">Vorname *</label>
-                    <input type="text" id="vorname" name="vorname" placeholder="z. B. Maria" required>
-                </div>
+            <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; direction:ltr">
+              <form id="sib-form" method="POST" action="https://493a00f6.sibforms.com/serve/MUIFAJBUvUs80nTZPDTRY553HnVgBKw8h4aQKKOjlD_I2RFWBU30bceNy8JgnuaoQI-aCkSBCTiqTOUL0Gqk9dt3pZdI7zKDlVMspZ8_t6uZCEPF-XP-BFiP-MIJcVLytvK_Cyh1bsQlW926vt7YqSUjlDhYlD1ZcFK1sCfsloiDM_kJj-zZn_qCfFsLh-hLtuPNGmY-w5ZPNUzLzw==" data-type="subscription">
 
-                <div class="form-group">
-                    <label class="field-label" for="nachname">Nachname *</label>
-                    <input type="text" id="nachname" name="nachname" placeholder="z. B. Müller" required>
-                </div>
-
-                <div class="form-group span-2">
-                    <label class="field-label" for="email">E-Mail-Adresse *</label>
-                    <input type="email" id="email" name="email" placeholder="ihre@praxis.de" required>
-                    <span class="field-hint">An diese Adresse senden wir die Zoom-Zugangsdaten.</span>
-                </div>
-
-                <div class="form-group span-2">
-                    <label class="field-label" for="beruf">Berufsgruppe *</label>
-                    <select id="beruf" name="beruf" required>
-                        <option value="">Bitte auswählen …</option>
-                        <option value="Ärztin/Arzt">Ärztin/Arzt</option>
-                        <option value="Apothekerin/Apotheker">Apothekerin/Apotheker</option>
-                        <option value="Heilpraktikerin/Heilpraktiker">Heilpraktikerin/Heilpraktiker</option>
-                        <option value="Heilpraktikeranwärter/Stud.med.">Heilpraktikeranwärter/Stud.med.</option>
-                        <option value="sonstige Heilberufe">Sonstige Heilberufe</option>
-                    </select>
-                </div>
-
-                <div class="form-group span-2">
-                    <div class="checkbox-row">
-                        <input type="checkbox" id="datenschutz" name="datenschutz" required>
-                        <label for="datenschutz">
-                            Mit dem Absenden stimme ich zu, dass meine Angaben zur Bearbeitung meiner Anfrage und im Newsletter-Verteiler der Seminarlounge gespeichert werden. Es besteht jederzeit die Möglichkeit zur Abmeldung.
-                        </label>
+                <!-- Vorname + Nachname nebeneinander -->
+                <div class="brevo-form-grid">
+                  <div style="padding: 8px 0;">
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <label class="entry__label" style="font-weight:700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#3c4858;" for="VORNAME" data-required="*">Vorname *</label>
+                          <div class="entry__field">
+                            <input class="input" maxlength="200" type="text" id="VORNAME" name="VORNAME" autocomplete="given-name" placeholder="z. B. Maria" data-required="true" required />
+                          </div>
+                        </div>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      </div>
                     </div>
+                  </div>
+                  <div style="padding: 8px 0;">
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <label class="entry__label" style="font-weight:700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#3c4858;" for="NACHNAME" data-required="*">Nachname *</label>
+                          <div class="entry__field">
+                            <input class="input" maxlength="200" type="text" id="NACHNAME" name="NACHNAME" autocomplete="family-name" placeholder="z. B. Müller" data-required="true" required />
+                          </div>
+                        </div>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-            </div>
+                <!-- E-Mail -->
+                <div style="padding: 8px 0;">
+                  <div class="sib-input sib-form-block">
+                    <div class="form__entry entry_block">
+                      <div class="form__label-row">
+                        <label class="entry__label" style="font-weight:700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#3c4858;" for="EMAIL" data-required="*">E-Mail-Adresse *</label>
+                        <div class="entry__field">
+                          <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="ihre@praxis.de" data-required="true" required />
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      <span class="field-hint">An diese Adresse senden wir die Zoom-Zugangsdaten.</span>
+                    </div>
+                  </div>
+                </div>
 
-            <div style="margin-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
-                <button type="submit" class="btn-submit">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                    </svg>
-                    Jetzt kostenlos anmelden
-                </button>
-                <p class="form-trust">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#989F95" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                    Deine Daten sind sicher &amp; werden nicht weitergegeben.
-                </p>
+                <!-- Berufsgruppe -->
+                <div style="padding: 8px 0;">
+                  <div class="sib-checkbox-group sib-form-block" data-required="true">
+                    <div class="form__entry entry_mcq">
+                      <div class="form__label-row">
+                        <label class="entry__label" style="font-weight:700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#3c4858;" data-required="*">Berufsgruppe *</label>
+                        <div>
+                          <div class="entry__choice">
+                            <label class="checkbox__label">
+                              <input type="checkbox" class="input_replaced" name="BERUFSGRUPPE[]" data-value="Ärztin/Arzt" value="Ärztin/Arzt" data-required="true" />
+                              <span class="checkbox checkbox_tick_positive"></span>
+                              <span style="font-size:15px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858;">Ärztin/Arzt</span>
+                            </label>
+                          </div>
+                          <div class="entry__choice">
+                            <label class="checkbox__label">
+                              <input type="checkbox" class="input_replaced" name="BERUFSGRUPPE[]" data-value="Apothekerin/Apotheker" value="Apothekerin/Apotheker" data-required="true" />
+                              <span class="checkbox checkbox_tick_positive"></span>
+                              <span style="font-size:15px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858;">Apothekerin/Apotheker</span>
+                            </label>
+                          </div>
+                          <div class="entry__choice">
+                            <label class="checkbox__label">
+                              <input type="checkbox" class="input_replaced" name="BERUFSGRUPPE[]" data-value="Heilpraktikerin/Heilpraktiker" value="Heilpraktikerin/Heilpraktiker" data-required="true" />
+                              <span class="checkbox checkbox_tick_positive"></span>
+                              <span style="font-size:15px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858;">Heilpraktikerin/Heilpraktiker</span>
+                            </label>
+                          </div>
+                          <div class="entry__choice">
+                            <label class="checkbox__label">
+                              <input type="checkbox" class="input_replaced" name="BERUFSGRUPPE[]" data-value="Heilpraktikeranwärter/Stud.med." value="Heilpraktikeranwärter/Stud.med." data-required="true" />
+                              <span class="checkbox checkbox_tick_positive"></span>
+                              <span style="font-size:15px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858;">Heilpraktikeranwärter/Stud.med.</span>
+                            </label>
+                          </div>
+                          <div class="entry__choice">
+                            <label class="checkbox__label">
+                              <input type="checkbox" class="input_replaced" name="BERUFSGRUPPE[]" data-value="sonstige Heilberufe" value="sonstige Heilberufe" data-required="true" />
+                              <span class="checkbox checkbox_tick_positive"></span>
+                              <span style="font-size:15px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858;">Sonstige Heilberufe</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Einwilligung -->
+                <div style="padding: 8px 0;">
+                  <div class="sib-optin sib-form-block" data-required="true">
+                    <div class="form__entry entry_mcq">
+                      <div class="form__label-row">
+                        <div class="entry__choice">
+                          <label>
+                            <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
+                            <span class="checkbox checkbox_tick_positive"></span>
+                            <span style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">
+                              Mit dem Absenden stimme ich zu, dass meine Angaben zur Bearbeitung meiner Anfrage und im Newsletter-Verteiler der Seminarlounge gespeichert werden. Es besteht jederzeit die Möglichkeit zur Abmeldung.
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Absenden -->
+                <div style="padding: 8px 0;">
+                  <div class="sib-form-block" style="text-align: left">
+                    <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                      <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                        <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/>
+                      </svg>
+                      Jetzt kostenlos anmelden
+                    </button>
+                    <p class="form-trust">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#989F95" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                      Deine Daten sind sicher &amp; werden nicht weitergegeben.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- reCAPTCHA -->
+                <div style="padding: 8px 0;">
+                  <div class="sib-captcha sib-form-block">
+                    <div class="form__entry entry_block">
+                      <div class="form__label-row">
+                        <script>
+                          function handleCaptchaResponse() {
+                            var event = new Event('captchaChange');
+                            document.getElementById('sib-captcha').dispatchEvent(event);
+                          }
+                        </script>
+                        <div class="g-recaptcha sib-visible-recaptcha" id="sib-captcha" data-sitekey="6LfeJ9UsAAAAAFuueWeshIQNpbdn1IVfnRJnc07E" data-callback="handleCaptchaResponse" style="direction:ltr"></div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Brevo Datenschutz-Hinweis (Pflichtangabe von Brevo) -->
+                <div style="padding: 8px 0;">
+                  <div class="sib-form__declaration" style="direction:ltr">
+                    <div class="declaration-block-icon">
+                      <svg class="icon__SVG" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <symbol id="svgIcon-sphere" viewBox="0 0 63 63">
+                            <path class="path1" d="M31.54 0l1.05 3.06 3.385-.01-2.735 1.897 1.05 3.042-2.748-1.886-2.738 1.886 1.044-3.05-2.745-1.897h3.393zm13.97 3.019L46.555 6.4l3.384.01-2.743 2.101 1.048 3.387-2.752-2.1-2.752 2.1 1.054-3.382-2.745-2.105h3.385zm9.998 10.056l1.039 3.382h3.38l-2.751 2.1 1.05 3.382-2.744-2.091-2.743 2.091 1.054-3.381-2.754-2.1h3.385zM58.58 27.1l1.04 3.372h3.379l-2.752 2.096 1.05 3.387-2.744-2.091-2.75 2.092 1.054-3.387-2.747-2.097h3.376zm-3.076 14.02l1.044 3.364h3.385l-2.743 2.09 1.05 3.392-2.744-2.097-2.743 2.097 1.052-3.377-2.752-2.117 3.385-.01zm-9.985 9.91l1.045 3.364h3.393l-2.752 2.09 1.05 3.393-2.745-2.097-2.743 2.097 1.05-3.383-2.751-2.1 3.384-.01zM31.45 55.01l1.044 3.043 3.393-.008-2.752 1.9L34.19 63l-2.744-1.895-2.748 1.891 1.054-3.05-2.743-1.9h3.384zm-13.934-3.98l1.036 3.364h3.402l-2.752 2.09 1.053 3.393-2.747-2.097-2.752 2.097 1.053-3.382-2.743-2.1 3.384-.01zm-9.981-9.91l1.045 3.364h3.398l-2.748 2.09 1.05 3.392-2.753-2.1-2.752 2.096 1.053-3.382-2.743-2.102 3.384-.009zM4.466 27.1l1.038 3.372H8.88l-2.752 2.097 1.053 3.387-2.743-2.09-2.748 2.09 1.053-3.387L0 30.472h3.385zm3.069-14.025l1.045 3.382h3.395L9.23 18.56l1.05 3.381-2.752-2.09-2.752 2.09 1.053-3.381-2.744-2.1h3.384zm9.99-10.056L18.57 6.4l3.393.01-2.743 2.1 1.05 3.373-2.754-2.092-2.751 2.092 1.053-3.382-2.744-2.1h3.384zm24.938 19.394l-10-4.22a2.48 2.48 0 00-1.921 0l-10 4.22A2.529 2.529 0 0019 24.75c0 10.47 5.964 17.705 11.537 20.057a2.48 2.48 0 001.921 0C36.921 42.924 44 36.421 44 24.75a2.532 2.532 0 00-1.537-2.336zm-2.46 6.023l-9.583 9.705a.83.83 0 01-1.177 0l-5.416-5.485a.855.855 0 010-1.192l1.177-1.192a.83.83 0 011.177 0l3.65 3.697 7.819-7.916a.83.83 0 011.177 0l1.177 1.191a.843.843 0 010 1.192z" fill="#0092FF"></path>
+                          </symbol>
+                        </defs>
+                      </svg>
+                      <svg class="svgIcon-sphere" style="width:63px; height:63px;">
+                        <use xlink:href="#svgIcon-sphere"></use>
+                      </svg>
+                    </div>
+                    <div style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#687484; background-color:transparent;">
+                      <p>Wir verwenden Brevo als unsere Marketing-Plattform. Indem du das Formular absendest, erklärst du dich einverstanden, dass die von dir angegebenen persönlichen Informationen an Brevo zur Bearbeitung übertragen werden gemäß den <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Brevo</a>.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <input type="text" name="email_address_check" value="" class="input--hidden">
+                <input type="hidden" name="locale" value="de">
+              </form>
             </div>
-        </form>
+          </div>
+        </div>
 
     </div>
 </section>
@@ -1139,81 +1297,6 @@
 
 
 <script>
-    // ── Brevo-Konfiguration ──────────────────────────────────────────
-    const BREVO_API_KEY       = '%%BREVO_API_KEY%%';   // wird per GitHub Secret injiziert
-    const BREVO_LIST_ID       = 11;
-    const BREVO_DOI_TEMPLATE  = 6;
-    const BREVO_REDIRECT_URL  = 'https://seminarlounge.com';
-    // ────────────────────────────────────────────────────────────────
-
-    document.getElementById('anmeldeForm').addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const v  = document.getElementById('vorname').value.trim();
-        const n  = document.getElementById('nachname').value.trim();
-        const em = document.getElementById('email').value.trim();
-        const b  = document.getElementById('beruf').value;
-        const ds = document.getElementById('datenschutz').checked;
-
-        // Validierung
-        if (!v || !n || !em || !b || !ds) {
-            [['vorname',v],['nachname',n],['email',em]].forEach(([id, val]) => {
-                document.getElementById(id).style.borderColor = val ? '' : '#c0392b';
-            });
-            if (!b)  document.getElementById('beruf').style.borderColor = '#c0392b';
-            if (!ds) document.querySelector('.checkbox-row').style.borderColor = '#c0392b';
-            return;
-        }
-
-        const btn = this.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        btn.textContent = 'Wird gesendet …';
-
-        try {
-            const res = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'api-key': BREVO_API_KEY
-                },
-                body: JSON.stringify({
-                    email: em,
-                    includeListIds: [BREVO_LIST_ID],
-                    templateId: BREVO_DOI_TEMPLATE,
-                    redirectionUrl: BREVO_REDIRECT_URL,
-                    attributes: {
-                        FIRSTNAME:    v,
-                        LASTNAME:     n,
-                        BERUFSGRUPPE: b
-                    }
-                })
-            });
-
-            if (!res.ok && res.status !== 204) {
-                const errBody = await res.text();
-                console.error('Brevo-Fehler', res.status, errBody);
-                throw new Error('Brevo-Fehler: ' + res.status);
-            }
-
-            const form    = document.getElementById('anmeldeForm');
-            const success = document.getElementById('formSuccess');
-            form.style.display = 'none';
-            success.classList.add('visible');
-            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        } catch (err) {
-            console.error(err);
-            btn.disabled = false;
-            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Jetzt kostenlos anmelden';
-            alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder wende dich direkt an info@seminarlounge.com.');
-        }
-    });
-
-    // Reset Feldfarben bei Eingabe
-    document.querySelectorAll('input, select').forEach(el => {
-        el.addEventListener('input', () => el.style.borderColor = '');
-    });
-
     // Hamburger-Menü
     const toggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('navMobile');
@@ -1224,6 +1307,25 @@
         });
     }
 </script>
+
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
+  window.LOCALE = 'de';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Die eingegebenen Informationen sind nicht gültig. Bitte überprüfe das Feldformat und versuche es erneut.";
+  window.REQUIRED_ERROR_MESSAGE = "Dieses Feld darf nicht leer sein.";
+  window.GENERIC_INVALID_MESSAGE = "Die eingegebenen Informationen sind nicht gültig. Bitte überprüfe das Feldformat und versuche es erneut.";
+  window.translation = {
+    common: {
+      selectedList: '{quantity} Liste ausgewählt',
+      selectedLists: '{quantity} Listen ausgewählt',
+      selectedOption: '{quantity} ausgewählt',
+      selectedOptions: '{quantity} ausgewählt',
+    }
+  };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?hl=de"></script>
 
 </body>
 </html>
